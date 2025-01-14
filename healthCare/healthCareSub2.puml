@@ -1,0 +1,69 @@
+@startuml
+scale 0.3
+left to right direction
+
+interface com.health.healthCare.repository.MyInchRepository {
+}
+
+
+class com.health.healthCare.service.MyInchService {
+- MyInchRepository myInchRepository
++ MyInch createMyInch(MyInch)
++ List<MyInch> getAllMyInches()
++ Optional<MyInch> getMyInchById(Long)
++ MyInch updateMyInch(Long,MyInch)
++ void deleteMyInch(Long)
+}
+
+class com.health.healthCare.controller.MyInchController {
+- MyInchService myInchService
++ ResponseEntity<MyInch> createMyInch(MyInch)
++ ResponseEntity<List<MyInch>> getAllMyInches()
++ ResponseEntity<MyInch> getMyInchById(Long)
++ ResponseEntity<MyInch> updateMyInch(Long,MyInch)
++ ResponseEntity<Void> deleteMyInch(Long)
+}
+
+class com.health.healthCare.entity.MyInch {
+- Long inchNo
+- String gender
+- int height
+- int weight
+- int age
+- int bmr
+- int carbs
+- int protein
+- int fat
+- LocalDateTime regdate
+- LocalDateTime updatedate
+# void onCreate()
+# void onUpdate()
++ Long getInchNo()
++ void setInchNo(Long)
++ String getGender()
++ void setGender(String)
++ int getHeight()
++ void setHeight(int)
++ int getWeight()
++ void setWeight(int)
++ int getAge()
++ void setAge(int)
++ int getBmr()
++ void setBmr(int)
++ int getCarbs()
++ void setCarbs(int)
++ int getProtein()
++ void setProtein(int)
++ int getFat()
++ void setFat(int)
++ LocalDateTime getRegdate()
++ void setRegdate(LocalDateTime)
++ LocalDateTime getUpdatedate()
++ void setUpdatedate(LocalDateTime)
+}
+
+MyInchController ..> MyInchService : calls
+MyInchService ..> MyInchRepository : calls
+MyInchRepository --> MyInch  : accesses
+
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class com.health.healthCare.HealthCareApplication {
++ {static} void main(String[])
+}
+
+@enduml

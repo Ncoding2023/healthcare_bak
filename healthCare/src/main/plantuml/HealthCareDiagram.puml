@@ -1,0 +1,15 @@
+@startuml
+class Person {
+    +String name
+    +int age
+    +getName()
+    +setName(String name)
+}
+
+class Employee {
+    +String employeeId
+    +getEmployeeId()
+}
+
+Person <|-- Employee
+@enduml

@@ -1,0 +1,53 @@
+@startuml
+scale 0.3
+left to right direction
+
+class com.health.healthCare.service.NutriFoodInfoService {
+- {static} Logger logger
+- NutritionRepository nutritionRepository
++ List<Nutrition> getAllNutrition()
++ List<Nutrition> getNutritionByCategory(String)
+}
+
+
+
+class com.health.healthCare.controller.NutriFoodInfoController {
+- {static} Logger log
+- NutriFoodInfoService nutriFoodInfoService
++ List<Nutrition> getAllNutrition()
++ List<Nutrition> getNutritionByCategory(String)
+}
+
+class com.health.healthCare.entity.Nutrition {
+- Long foodNo
+- String foodName
+- String category
+- String servingSize
+- Double energy
+- Double moisture
+- Double protein
+- Double fat
+- Double carbohydrate
+- Double sugar
+- Double fiber
+- Double calcium
+- Double potassium
+- Double sodium
+- Double vitaminD
+- Double cholesterol
+- Double saturatedFat
+- Double transFat
+- String regDate
+- String updateDate
+}
+
+interface com.health.healthCare.repository.NutritionRepository {
+~ List<Nutrition> findAll()
+~ List<Nutrition> findByCategory(String)
+}
+
+NutriFoodInfoService ..> NutritionRepository : calls
+NutriFoodInfoController ..> NutriFoodInfoService : calls
+NutritionRepository --> Nutrition  : accesses
+
+@enduml

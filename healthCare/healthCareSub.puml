@@ -1,0 +1,63 @@
+@startuml
+
+left to right direction
+
+interface com.health.healthCare.repository.ExerciseDataRepository {
+}
+
+class com.health.healthCare.service.ExerciseDataService {
+- ExerciseDataRepository exerciseDataRepository
++ List<ExerciseData> getAllExercisesData()
++ Optional<ExerciseData> getExerciseDataById(Long)
+}
+
+
+class com.health.healthCare.controller.ExerciseDataController {
+- ExerciseDataService exerciseDataService
++ ResponseEntity<List<ExerciseData>> getAllMyInches()
++ ResponseEntity<ExerciseData> getMyInchById(Long)
+}
+
+
+
+class com.health.healthCare.entity.ExerciseData {
+- Long exerciseNo
+- String exerciseImg
+- String exerciseCd
+- String exerciseName
+- String exerciseMainArea
+- String exerciseSuvArea
+- String exerciseDescription
+- LocalDateTime exerciseRegdate
+- LocalDateTime exerciseUpdatedate
+# void onCreate()
+# void onUpdate()
++ Long getExerciseNo()
++ void setExerciseNo(Long)
++ String getExerciseImg()
++ void setExerciseImg(String)
++ String getExerciseCd()
++ void setExerciseCd(String)
++ String getExerciseName()
++ void setExerciseName(String)
++ String getExerciseMainArea()
++ void setExerciseMainArea(String)
++ String getExerciseSuvArea()
++ void setExerciseSuvArea(String)
++ String getExerciseDescription()
++ void setExerciseDescription(String)
++ LocalDateTime getExerciseRegdate()
++ void setExerciseRegdate(LocalDateTime)
++ LocalDateTime getExerciseUpdatedate()
++ void setExerciseUpdatedate(LocalDateTime)
+}
+
+
+'left  right
+ExerciseDataController ..> ExerciseDataService : calls
+ExerciseDataService ..> ExerciseDataRepository : calls
+ExerciseDataRepository --> ExerciseData  : accesses
+
+
+
+@enduml

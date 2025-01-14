@@ -1,0 +1,286 @@
+@startuml
+scale 0.3
+
+
+'!define RECTANGLE class
+left to right direction
+
+class com.health.healthCare.service.NutriFoodInfoService {
+- {static} Logger logger
+- NutritionRepository nutritionRepository
++ List<Nutrition> getAllNutrition()
++ List<Nutrition> getNutritionByCategory(String)
+}
+
+
+interface com.health.healthCare.repository.MyInchRepository {
+}
+class com.health.healthCare.utility.CustomLocalDateTimeDeserializer {
+- {static} DateTimeFormatter formatter
++ LocalDateTime deserialize(JsonParser,DeserializationContext)
+}
+
+
+class com.health.healthCare.controller.NutriFoodInfoController {
+- {static} Logger log
+- NutriFoodInfoService nutriFoodInfoService
++ List<Nutrition> getAllNutrition()
++ List<Nutrition> getNutritionByCategory(String)
+}
+
+
+class com.health.healthCare.entity.ExerciseRoutine {
+- Long routineNo
+- String routineCd
+- String routineName
+- String exerciseName
+- String routineDescription
+- int exerciseSet
+- int exerciseNum
+- LocalDateTime regdate
+- LocalDateTime updatedate
+# void onCreate()
+# void onUpdate()
++ Long getRoutineNo()
++ void setRoutineNo(Long)
++ String getRoutineCd()
++ void setRoutineCd(String)
++ String getRoutineName()
++ void setRoutineName(String)
++ String getExerciseName()
++ void setExerciseName(String)
++ String getRoutineDescription()
++ void setRoutineDescription(String)
++ int getExerciseSet()
++ void setExerciseSet(int)
++ int getExerciseNum()
++ void setExerciseNum(int)
++ LocalDateTime getRegdate()
++ void setRegdate(LocalDateTime)
++ LocalDateTime getUpdatedate()
++ void setUpdatedate(LocalDateTime)
+}
+
+
+class com.health.healthCare.service.MyInchService {
+- MyInchRepository myInchRepository
++ MyInch createMyInch(MyInch)
++ List<MyInch> getAllMyInches()
++ Optional<MyInch> getMyInchById(Long)
++ MyInch updateMyInch(Long,MyInch)
++ void deleteMyInch(Long)
+}
+
+
+class com.health.healthCare.Domain.ExerciseRoutineRequest {
+- String routineCd
+- String routineName
+- String routineDescription
+- List<ExerciseDTO> exercises
++ String getRoutineCd()
++ void setRoutineCd(String)
++ String getRoutineName()
++ void setRoutineName(String)
++ String getRoutineDescription()
++ void setRoutineDescription(String)
++ List<ExerciseDTO> getExercises()
++ void setExercises(List<ExerciseDTO>)
+}
+
+
+interface com.health.healthCare.repository.ExerciseDataRepository {
+}
+class com.health.healthCare.Domain.ExerciseDTO {
+- long exerciseNo
+- String exerciseName
+- int exerciseSet
+- int exerciseNum
++ long getExerciseNo()
++ void setExerciseNo(int)
++ String getExerciseName()
++ void setExerciseName(String)
++ int getExerciseSet()
++ void setExerciseSet(int)
++ int getExerciseNum()
++ void setExerciseNum(int)
+}
+
+
+class com.health.healthCare.controller.MyInchController {
+- MyInchService myInchService
++ ResponseEntity<MyInch> createMyInch(MyInch)
++ ResponseEntity<List<MyInch>> getAllMyInches()
++ ResponseEntity<MyInch> getMyInchById(Long)
++ ResponseEntity<MyInch> updateMyInch(Long,MyInch)
++ ResponseEntity<Void> deleteMyInch(Long)
+}
+
+
+class com.health.healthCare.service.ExerciseRoutineService {
+- {static} Logger log
+- ExerciseRoutineRepository exerciseRoutineRepository
++ List<ExerciseRoutine> createRoutine(ExerciseRoutineRequest)
++ List<ExerciseRoutine> updateRoutine(Long,ExerciseRoutineRequest)
++ void deleteRoutine(String)
++ List<ExerciseRoutine> getRoutines(String)
++ List<ExerciseRoutine> getAllRoutines()
++ List<ExerciseRoutine> getNameRoutines(String)
++ List<ExerciseRoutine> getRoutinesByName(String)
+}
+
+
+class com.health.healthCare.controller.ExerciseRoutineController {
+- ExerciseRoutineService exerciseRoutineService
++ ResponseEntity<List<ExerciseRoutine>> createRoutine(ExerciseRoutineRequest)
++ ResponseEntity<List<ExerciseRoutine>> updateRoutine(Long,ExerciseRoutineRequest)
++ ResponseEntity<Void> deleteRoutine(String)
++ ResponseEntity<List<ExerciseRoutine>> getAllRoutines()
++ List<ExerciseRoutine> getRoutinesByName(String)
+}
+
+
+class com.health.healthCare.service.ExerciseDataService {
+- ExerciseDataRepository exerciseDataRepository
++ List<ExerciseData> getAllExercisesData()
++ Optional<ExerciseData> getExerciseDataById(Long)
+}
+
+
+class com.health.healthCare.controller.ExerciseDataController {
+- ExerciseDataService exerciseDataService
++ ResponseEntity<List<ExerciseData>> getAllMyInches()
++ ResponseEntity<ExerciseData> getMyInchById(Long)
+}
+
+
+class com.health.healthCare.HealthCareApplication {
++ {static} void main(String[])
+}
+
+class com.health.healthCare.utility.CustomLocalDateTimeSerializer {
+- {static} DateTimeFormatter formatter
++ void serialize(LocalDateTime,JsonGenerator,SerializerProvider)
+}
+
+
+interface com.health.healthCare.repository.ExerciseRoutineRepository {
+~ List<ExerciseRoutine> findByRoutineNo(Long)
+~ List<ExerciseRoutine> findByRoutineCd(String)
+~ List<ExerciseRoutine> findByRoutineName(String)
+~ List<ExerciseRoutine> findByRoutineNameContaining(String)
+~ void deleteById(Long)
+}
+
+class com.health.healthCare.entity.Nutrition {
+- Long foodNo
+- String foodName
+- String category
+- String servingSize
+- Double energy
+- Double moisture
+- Double protein
+- Double fat
+- Double carbohydrate
+- Double sugar
+- Double fiber
+- Double calcium
+- Double potassium
+- Double sodium
+- Double vitaminD
+- Double cholesterol
+- Double saturatedFat
+- Double transFat
+- String regDate
+- String updateDate
+}
+
+interface com.health.healthCare.repository.NutritionRepository {
+~ List<Nutrition> findAll()
+~ List<Nutrition> findByCategory(String)
+}
+
+class com.health.healthCare.entity.ExerciseData {
+- Long exerciseNo
+- String exerciseImg
+- String exerciseCd
+- String exerciseName
+- String exerciseMainArea
+- String exerciseSuvArea
+- String exerciseDescription
+- LocalDateTime exerciseRegdate
+- LocalDateTime exerciseUpdatedate
+# void onCreate()
+# void onUpdate()
++ Long getExerciseNo()
++ void setExerciseNo(Long)
++ String getExerciseImg()
++ void setExerciseImg(String)
++ String getExerciseCd()
++ void setExerciseCd(String)
++ String getExerciseName()
++ void setExerciseName(String)
++ String getExerciseMainArea()
++ void setExerciseMainArea(String)
++ String getExerciseSuvArea()
++ void setExerciseSuvArea(String)
++ String getExerciseDescription()
++ void setExerciseDescription(String)
++ LocalDateTime getExerciseRegdate()
++ void setExerciseRegdate(LocalDateTime)
++ LocalDateTime getExerciseUpdatedate()
++ void setExerciseUpdatedate(LocalDateTime)
+}
+
+
+class com.health.healthCare.entity.MyInch {
+- Long inchNo
+- String gender
+- int height
+- int weight
+- int age
+- int bmr
+- int carbs
+- int protein
+- int fat
+- LocalDateTime regdate
+- LocalDateTime updatedate
+# void onCreate()
+# void onUpdate()
++ Long getInchNo()
++ void setInchNo(Long)
++ String getGender()
++ void setGender(String)
++ int getHeight()
++ void setHeight(int)
++ int getWeight()
++ void setWeight(int)
++ int getAge()
++ void setAge(int)
++ int getBmr()
++ void setBmr(int)
++ int getCarbs()
++ void setCarbs(int)
++ int getProtein()
++ void setProtein(int)
++ int getFat()
++ void setFat(int)
++ LocalDateTime getRegdate()
++ void setRegdate(LocalDateTime)
++ LocalDateTime getUpdatedate()
++ void setUpdatedate(LocalDateTime)
+}
+
+
+class com.health.healthCare.utility.RestTemplateConfig {
++ RestTemplate restTemplate()
+}
+
+
+
+org.springframework.data.jpa.repository.JpaRepository <|-- com.health.healthCare.repository.MyInchRepository
+com.fasterxml.jackson.databind.JsonDeserializer <|-- com.health.healthCare.utility.CustomLocalDateTimeDeserializer
+org.springframework.data.jpa.repository.JpaRepository <|-- com.health.healthCare.repository.ExerciseDataRepository
+com.fasterxml.jackson.databind.ser.std.StdSerializer <|-- com.health.healthCare.utility.CustomLocalDateTimeSerializer
+org.springframework.data.jpa.repository.JpaRepository <|-- com.health.healthCare.repository.ExerciseRoutineRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- com.health.healthCare.repository.NutritionRepository
+@enduml
