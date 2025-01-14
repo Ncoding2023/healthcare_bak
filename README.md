@@ -49,16 +49,16 @@ MariaDB 연동:
 Spring Data JPA를 통해 MariaDB와 데이터 통신
 
 # 개발 환경
-운영체제: Windows10
-Java 버전: 17
-Gradle(spring boot) 버전: 3.3.4
-MariaDB 버전: 11.5.2
+운영체제: Windows10 <br>
+Java 버전: 17    <br>
+Gradle(spring boot) 버전: 3.3.4    <br>
+MariaDB 버전: 11.5.2    <br>
 
 문의
-개발자: [남상원]
-이메일: [ncoding1@gmail.com]
+개발자: [남상원]    <br>
+이메일: [ncoding1@gmail.com]    <br>
 tel : 010 2900 6103
-
+<br>
 피드백로 알려주시면 주의 깊게 새겨듣겠습니다.
 
 #  감사합니다.
