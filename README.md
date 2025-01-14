@@ -13,6 +13,9 @@ healthcare는 Spring Boot를 사용하여 백엔드 애플리케이션을 개발
 데이터베이스: MariaDB
 개발 도구: IntelliJ IDEA
 
+
+```javascript
+console.log("Hello, World!");
 src/
 ├── main/
 │   ├── java/com/health/healthcare/
