@@ -8,11 +8,11 @@ healthcare는 Spring Boot를 사용하여 백엔드 애플리케이션을 개발
 하자는 취재로 healthcare 프로젝트를 구현하며 백엔드부분으로는 Spring Boot와 MariaDB와 연동하여 CRUD 작업을 수행하는 것입니다.
 
 # 주요 기술 스택
-
+```
 백엔드 프레임워크: Spring Boot
 데이터베이스: MariaDB
 개발 도구: IntelliJ IDEA
-```
+
 src/
 ├── main/
 │   ├── java/com/health/healthcare/
@@ -29,11 +29,12 @@ src/
 └── test/
     └── java/com/health/healthcare/   # 테스트 코드
 )
-
+```
 #  주요 기능
 운동 및 식품 데이터를 확인하며 운동 루틴을 커스텀할 수 있습니다.
 
 #  테이블별 기능 
+```
 myinch  생성(Create)
 :  회원 가입없이 사용하는 웹으로 처음 방문자의 신체수치를 기록하여 저장
 exercise_data   조회(Read)
@@ -43,7 +44,7 @@ nutrition  조회(Read)
 exercise_routine  생성(Create), 조회(Read), 수정(Update), 삭제(Delete) 
 :  기본적인 운동 루틴도 있으며 나만의 루틴을 따로 만들어서 작성하며,
 저장되있는 루틴을 조회하여 수정 및 삭제도 가능
-
+```
 MariaDB 연동:
 Spring Data JPA를 통해 MariaDB와 데이터 통신
 
